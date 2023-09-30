@@ -1,7 +1,7 @@
 <template>
   <h1>How Globio works <span>Demo</span></h1>
   <div v-if="breadcrumbs[2].active" class="caption" style="text-align:center;">You did it! 🎉 Take your stress-free
-    adaptation to {{ selectedCountry[0].name }} {{ selectedCountry[0].flag }}
+    adaptation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}
   </div>
   <div v-if="breadcrumbs[2].active" class="final_caption">Join the waitlist for the Beta version with the ability to
     personalise results.
@@ -270,9 +270,9 @@
           class="app"
           :style="selectedTip[0].active ? `background-color: ${selectedTip[0].color}` : 'background-color: #fff;'"
       >
-        <Transition name="slide-fade">
+        <Transition name="slide-left">
         <div v-if="!selectedTip[0].active" class="parent_tips">
-          <h2>Relocation to {{ selectedCountry[0].name }} {{ selectedCountry[0].flag }}</h2>
+          <h2>Relocation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}</h2>
           <div class="progress">
             <div
                 class="bar"
@@ -316,7 +316,7 @@
                   </circle>
                 </svg>
                 <div class="number">
-                  <h2>{{ tip.progress }}<span>%</span></h2>
+                  <h2>{{ tip.progress.toFixed(0) }}<span>%</span></h2>
                 </div>
               </div>
 
@@ -360,7 +360,7 @@
                 </circle>
               </svg>
               <div class="number">
-                <h2>{{ selectedTip[0].progress }}<span>%</span></h2>
+                <h2>{{ selectedTip[0].progress.toFixed(0) }}<span>%</span></h2>
               </div>
             </div>
           </div>
@@ -916,6 +916,42 @@ const countries = ref<Array<CountryItem>>([
               },
             ]
           },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
         ]
       },
       {
@@ -951,6 +987,54 @@ const countries = ref<Array<CountryItem>>([
               },
             ]
           },
+          {
+            title: "Determine your budget and length of stay in apartments",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Determine your budget and length of stay in apartments",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
         ]
       },
       {
@@ -962,6 +1046,102 @@ const countries = ref<Array<CountryItem>>([
         checked: false,
         progress: 0,
         childTips: [
+          {
+            title: "Determine your budget and length of stay in apartments",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Determine your budget and length of stay in apartments",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Determine your budget and length of stay in apartments",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Determine your budget and length of stay in apartments",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "/dist/assets/ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
           {
             title: "Determine your budget and length of stay in apartments",
             checked: false,
@@ -1302,7 +1482,6 @@ const toNextStep = (step: number) => {
 }
 
 const restart = () => {
-  selectedCountry.value = [];
   selectedTip.value[0].active = false;
   selectedTip.value[0].progress = 0;
   selectedCountry.value[0].tips.map(t => t.progress = 0);
@@ -1322,6 +1501,7 @@ const restart = () => {
       c.active = false;
     })
   })
+  selectedCountry.value = [];
 }
 
 const backToTips = () => {
@@ -1874,19 +2054,51 @@ button {
 .third {
   max-width: 366px;
   margin-bottom: -150px;
+  position: relative;
+  aspect-ratio: 330/679;
+  width: 366px;
+  overflow: hidden;
 
-  .app {
-    aspect-ratio: 330/679;
+  &:before {
+    content: "";
     background-image: url("/dist/assets/phone_frame.png");
     background-size: contain;
     background-position-y: top;
     background-repeat: no-repeat;
     background-position-x: center;
-    padding: 100px 34px 16px;
-    min-width: 366px;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .app {
+    aspect-ratio: 330/679;
+    padding: 100px 16px 16px;
+    //min-width: 366px;
+    //box-sizing: border-box;
+    //background-color: #fff;
+    //border-radius: 64px;
+    //position: absolute;
+    //aspect-ratio: 330/679;
+    //padding: 100px 34px 16px;
+    /* min-width: 366px; */
     box-sizing: border-box;
     background-color: #fff;
-    border-radius: 64px;
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: calc(100% - 32px);
+    transform: translateX(15px);
+    height: calc(100% - 30px);
+    top: 14px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     h2 {
       font-size: 23px;
@@ -2280,24 +2492,45 @@ button {
   Enter and leave animations can use different
   durations and timing functions.
 */
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
-}
+//.slide-left-enter-active {
+//  transition: all 0.3s ease-out;
+//}
+//
+//.slide-left-leave-active {
+//  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+//}
+//
+//.slide-left-enter-from,
+//.slide-left-leave-to {
+//  transform: translateX(20px);
+//  opacity: 0;
+//}
 
 .child_tip__head {
   display: grid;
   grid-template-columns: 1fr 40px;
   grid-gap: 10px;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.parent_tips {
+  position: absolute;
+  left: 16px;
+  right: 16px;
 }
 
 </style>
