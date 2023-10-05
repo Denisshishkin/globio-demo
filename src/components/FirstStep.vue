@@ -1,5 +1,4 @@
 <template>
-  <h1>How Globio works <span>Demo</span></h1>
   <div v-if="breadcrumbs[2].active" class="caption" style="text-align:center;">You did it! 🎉 Take your stress-free
     adaptation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}
   </div>
@@ -68,9 +67,21 @@
   </div>
 
 
+  <div class="mob_titles">
+    <h3 v-if="!breadcrumbs[2].active">
+      <template v-if="breadcrumbs[1].active">Choose a Country</template>
+      <template v-else>Set You Basics</template>
+    </h3>
+    <div v-if="!breadcrumbs[2].active" class="caption">
+      <template v-if="breadcrumbs[1].active">We generated a special adaptation list for selected country</template>
+      <template v-else>Pick up to 5 parameters, and we'll generate 3 countries based on them</template>
+    </div>
+  </div>
+
   <div
       class="globio_content"
-      :style="finish ? 'background-image: url(/dist/assets/final_bg.png);background-size: contain;background-position: center;background-repeat: no-repeat;': ''"
+      :class="finish ? 'finished_step' : ''"
+      :style="finish ? `background-image: url(${selectedCountry[0].bg});background-size: contain;background-position: center;background-repeat: no-repeat;`: ''"
   >
     <svg v-if="breadcrumbs[0].active" class="arrow1" width="151" height="150" viewBox="0 0 151 150" fill="none"
          xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +138,7 @@
         </div>
       </div>
 
-      <div class="skip" @click="onSkip">Skip, I already know the country for my relocation</div>
+      <div class="skip" @click="onSkip">Skip, I know my relocation country</div>
       <button :disabled="tempChips.length < 1" class="next" @click="toNextStep(1)">Next</button>
     </div>
 
@@ -551,6 +562,7 @@ const countries = ref<Array<CountryItem>>([
   {
     name: "Portugal",
     flag: "🇵🇹",
+    bg: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a8386d472cd1d3098_portugal_bg.png",
     id: 0,
     active: false,
     chips: [
@@ -641,13 +653,13 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
               },
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -659,7 +671,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -673,6 +685,7 @@ const countries = ref<Array<CountryItem>>([
   {
     name: "Malta",
     flag: "🇲🇹",
+    bg: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a39cd4128ec0b9593_malta_bg.png",
     id: 1,
     active: false,
     chips: [
@@ -763,7 +776,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "he average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -775,7 +788,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "he average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -789,6 +802,7 @@ const countries = ref<Array<CountryItem>>([
   {
     name: "Thailand",
     flag: "🇹🇭",
+    bg: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a4a697111470b5239_thailand_bg.png",
     id: 2,
     active: false,
     chips: [
@@ -879,37 +893,25 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
               },
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
               },
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
               },
               {
-                ava: "/dist/assets/ava.png",
-                name: "Jenna A.",
-                caption: "The average housing in Alanya varies from $800-1,000",
-                date: "3d ago",
-              },
-            ]
-          },
-          {
-            title: "Select type of accommodation",
-            checked: false,
-            userTips: [
-              {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -921,7 +923,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -933,7 +935,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -945,7 +947,19 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
+                name: "Jenna A.",
+                caption: "The average housing in Alanya varies from $800-1,000",
+                date: "3d ago",
+              },
+            ]
+          },
+          {
+            title: "Select type of accommodation",
+            checked: false,
+            userTips: [
+              {
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -968,7 +982,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -980,7 +994,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -992,7 +1006,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1004,7 +1018,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1016,7 +1030,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1028,7 +1042,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1051,7 +1065,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1063,7 +1077,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1075,7 +1089,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1087,7 +1101,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1099,7 +1113,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1111,7 +1125,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1123,7 +1137,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1135,7 +1149,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1147,7 +1161,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1159,7 +1173,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1173,6 +1187,7 @@ const countries = ref<Array<CountryItem>>([
   {
     name: "Greece",
     flag: "🇬🇷",
+    bg: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a382f45925434ba68_greece_bg.png",
     id: 3,
     active: false,
     chips: [
@@ -1263,7 +1278,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1275,7 +1290,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1289,6 +1304,7 @@ const countries = ref<Array<CountryItem>>([
   {
     name: "Spain",
     flag: "🇪🇸",
+    bg: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a3b4af9b3a337d39b_spain_bg.png",
     id: 4,
     active: false,
     chips: [
@@ -1379,7 +1395,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1391,7 +1407,7 @@ const countries = ref<Array<CountryItem>>([
             checked: false,
             userTips: [
               {
-                ava: "/dist/assets/ava.png",
+                ava: "https://uploads-ssl.webflow.com/64d15b8bef1b2f28f40b4f1e/651c607a0e526422624e8031_ava.png",
                 name: "Jenna A.",
                 caption: "The average housing in Alanya varies from $800-1,000",
                 date: "3d ago",
@@ -1528,18 +1544,21 @@ const setActiveChildTip = (tip: ChildTip) => {
   tip.checked = !tip.checked;
 }
 
-const progressBarPercentage = (val) => {
-  console.log(val)
+const progressBarPercentage = (val: number | undefined) => {
   // return (selectedCountry.value[0].tips.length - (selectedCountry.value[0].tips.length - val)) * 10 * val;
   // return (100 / selectedCountry.value[0].tips.length) * val;
-  return (100 / childTotalTipsLength.value * val)
+  if (val === undefined) {
+    return 0;
+  }
+
+  return (100 / childTotalTipsLength.value) * val;
 };
 
-const progressBarChildsPercentage = (val) => {
-  console.log(val)
-  // return (selectedCountry.value[0].tips.length - (selectedCountry.value[0].tips.length - val)) * 10 * val;
-  return (100 / selectedTip.value[0].childTips.length) * val;
-};
+// const progressBarChildsPercentage = (val) => {
+//   console.log(val)
+//   // return (selectedCountry.value[0].tips.length - (selectedCountry.value[0].tips.length - val)) * 10 * val;
+//   return (100 / selectedTip.value[0].childTips.length) * val;
+// };
 
 watch(() => tempChips.value.length, (value) => {
   if (value >= 5) {
@@ -1629,910 +1648,7 @@ watch(() => selectedTip.value[0]?.childTips.filter(i => i.checked), (value) => {
 </script>
 
 <style lang="scss" scoped>
-
-h1 {
-  text-align: center;
-  color: #000;
-  font-size: 62px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin-bottom: 40px;
-  position: relative;
-
-  span {
-    color: #315C52;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    position: absolute;
-    border-radius: 1000px;
-    background: rgba(199, 220, 205, 0.30);
-    padding: 3px 5px 2px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    right: 0;
-    left: 0;
-    top: -13px;
-    margin: auto;
-    transform: translateX(57px);
-  }
-}
-
-.caption {
-  font-size: 24px;
-  font-weight: 500;
-}
-
-button {
-  cursor: pointer;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
-.btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 10px;
-  margin-top: 30px;
-  position: relative;
-}
-
-
-.breadcrumbs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 133px;
-  max-width: 1230px;
-  margin: 20px auto 60px;
-
-  &__item {
-    opacity: .6;
-    pointer-events: none;
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    grid-gap: 17px;
-    align-items: flex-start;
-    position: relative;
-
-    .info {
-      h3 {
-        margin: 0 0 10px;
-        color: #000;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-      }
-
-      .caption {
-        color: #315C52;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 19px; /* 135.714% */
-      }
-    }
-
-    .step {
-      border: 1px solid rgba(0, 0, 0, 0.10);
-      border-radius: 50%;
-      width: 50px;
-      min-width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
-
-    &__active {
-      opacity: 1;
-      pointer-events: auto;
-
-      .step {
-        background: #CDF765;
-        border: 0;
-      }
-    }
-
-    svg {
-      position: absolute;
-      right: -86px;
-    }
-  }
-}
-
-.chips_block {
-  //border-radius: 20px;
-  //border: 1px solid rgba(199, 220, 205, 0.60);
-  //background: rgba(199, 220, 205, 0.30);
-  //padding: 56px 0 27px;
-  //width: 100%;
-
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    grid-gap: 10px;
-    max-width: 940px;
-    margin: 0 auto;
-  }
-
-  &__item {
-    border-radius: 10px;
-    background: #FFF;
-    box-shadow: 0 2px 1px 0 #C7D7CB;
-    white-space: nowrap;
-    padding: 10px;
-    cursor: pointer;
-    border: 0;
-    outline: none;
-    font-size: 16px;
-  }
-
-  &__input {
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    background: #FFF;
-    min-height: 72px;
-    width: 100%;
-    margin: 32px auto 0;
-    max-width: 887px;
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 10px;
-    align-items: center;
-    padding: 17px 14px;
-
-    .active_chip {
-      border-radius: 10px;
-      background: #CDF765;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 10px;
-      grid-gap: 10px;
-      cursor: pointer;
-    }
-  }
-
-
-  .skip {
-    text-decoration: underline;
-    text-align: center;
-    margin-top: 37px;
-    cursor: pointer;
-    color: #315C52;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 19px; /* 135.714% */
-  }
-
-}
-
-.next {
-  background: #CDF765;
-  outline: none;
-  border-radius: 300px;
-  border: 0;
-  color: #000;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  height: 49px;
-  max-width: 164px;
-  width: 100%;
-  margin: 40px auto 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-  }
-}
-
-.globio_content {
-  border-radius: 20px;
-  border: 1px solid rgba(199, 220, 205, 0.60);
-  background: rgba(199, 220, 205, 0.30);
-  padding: 20px 0;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  .arrow1 {
-    position: absolute;
-    top: -52px;
-    transform: translateX(-537px);
-  }
-
-}
-
-.loader {
-  color: #248459;
-  text-align: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 19px; /* 135.714% */
-  position: relative;
-
-  svg {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -120px;
-  }
-}
-
-.second {
-  width: 100%;
-  //border-radius: 20px;
-  //border: 1px solid rgba(199, 220, 205, 0.60);
-  //background: rgba(199, 220, 205, 0.30);
-  //padding: 70px 0 27px;
-
-  ul.counties {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1070px;
-    margin: 0 auto;
-    grid-gap: 20px;
-    padding: 0;
-
-    li {
-      background: #fff;
-      padding: 0 16px 0;
-      border-radius: 10px;
-      border: 3px solid transparent;
-      height: 292px;
-      overflow-y: auto;
-      position: relative;
-      box-shadow: 0 0 1px #e5e5e5;
-
-      &::after {
-        content: "";
-        width: 100%;
-        height: 50px;
-        background: linear-gradient(0deg, white, transparent);
-        display: block;
-        position: sticky;
-        bottom: 0;
-        left: 0;
-      }
-
-      .head {
-        display: flex;
-        align-items: center;
-        margin-bottom: 14px;
-        justify-content: space-between;
-        padding: 16px 0;
-        position: sticky;
-        top: 0;
-        background: #fff;
-      }
-
-      .title {
-        color: #000;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-      }
-
-      p {
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 21px;
-      }
-
-      .btn {
-        color: #000;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        display: flex;
-        padding: 12px 58px;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        background: #B1E530;
-        border-radius: 300px;
-        border: 0;
-        outline: none;
-        font-size: 16px;
-        visibility: hidden;
-        opacity: 0;
-        transition: all .3s ease-in-out;
-      }
-
-      &:hover {
-        .btn {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-
-      &.country__active {
-        border: 3px solid #B1E530;
-
-        .btn {
-          background: #C7DCCD;
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  .skip_counties {
-    max-width: 850px;
-    margin: 0 auto;
-
-    .caption {
-      color: #315C52;
-      text-align: center;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 19px; /* 135.714% */
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 30px;
-    }
-
-    .countries_row {
-      display: grid;
-      grid-gap: 20px;
-      grid-template-columns: repeat(5, 1fr);
-
-      .country {
-        border-radius: 10px;
-        background: #FFF;
-        padding: 10px;
-        border: 3px solid transparent;
-
-        &__active {
-          border: 3px solid #B1E530;
-        }
-
-        &__title {
-          color: #000;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: normal;
-          margin-bottom: 30px;
-        }
-
-        &__button {
-          color: #000;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: normal;
-          display: flex;
-          width: 90px;
-          padding: 12px 58px;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          background: #B1E530;
-          border-radius: 300px;
-          border: 0;
-          outline: none;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    }
-  }
-}
-
-
-.third {
-  max-width: 366px;
-  margin-bottom: -150px;
-  position: relative;
-  aspect-ratio: 330/679;
-  width: 366px;
-  overflow: hidden;
-
-  &:before {
-    content: "";
-    background-image: url("/dist/assets/phone_frame.png");
-    background-size: contain;
-    background-position-y: top;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-
-  .app {
-    aspect-ratio: 330/679;
-    padding: 100px 16px 16px;
-    //min-width: 366px;
-    //box-sizing: border-box;
-    //background-color: #fff;
-    //border-radius: 64px;
-    //position: absolute;
-    //aspect-ratio: 330/679;
-    //padding: 100px 34px 16px;
-    /* min-width: 366px; */
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 50px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: calc(100% - 32px);
-    transform: translateX(15px);
-    height: calc(100% - 30px);
-    top: 14px;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    h2 {
-      font-size: 23px;
-      font-style: normal;
-      margin-bottom: 10px;
-      font-weight: 700;
-      line-height: 41px; /* 136.667% */
-      letter-spacing: 0.374px;
-      margin-top: 0;
-    }
-
-    .progress {
-      background: #F4F3EE;
-      height: 10px;
-      border-radius: 300px;
-      position: relative;
-      overflow: hidden;
-
-      .bar {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        background: #B1E530;
-        display: block;
-        transition: width .3s ease-in-out;
-      }
-    }
-
-    .tips {
-      margin: 22px 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 10px;
-      position: relative;
-      //&::before {
-      //  content: "";
-      //  width: 2px;
-      //  height: calc(100% - 28px);
-      //  position: absolute;
-      //  display: block;
-      //  background: #000;
-      //  left: 20px;
-      //  top: 14px;
-      //}
-
-      .tip {
-        padding: 10px;
-        display: grid;
-        grid-template-columns: 40px 1fr 40px;
-        grid-gap: 10px;
-        align-items: center;
-        border-radius: 13px;
-        cursor: pointer;
-
-        &__radio {
-          border-radius: 50%;
-          border: 2px solid #000;
-          width: 18px;
-          min-width: 18px;
-          height: 18px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          position: relative;
-
-          svg {
-            width: 100% !important;
-            height: 100% !important;
-          }
-
-          &.checked {
-            background: #000 !important;
-
-            &::before {
-              content: "";
-              width: 80%;
-              height: 80%;
-              display: block;
-              background: #000;
-              border-radius: 50%;
-            }
-          }
-        }
-
-        &__title {
-          font-size: 13px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 20px;
-        }
-
-        svg {
-          display: block;
-          width: 30px;
-          height: 30px;
-          min-width: 30px;
-          cursor: pointer;
-        }
-      }
-    }
-
-    .child_tips {
-      h2 {
-        display: grid;
-        grid-template-columns: 40px 1fr;
-        grid-gap: 10px;
-        font-size: 23px;
-        line-height: 1.17;
-        margin: 0 0 30px;
-        //align-items: center;
-
-        svg {
-          display: block;
-          width: 30px;
-          height: 30px;
-          min-width: 30px;
-          cursor: pointer;
-        }
-      }
-
-      &__row {
-        .child_tip {
-          position: relative;
-
-          &::before {
-            content: "";
-            width: 2px;
-            height: 80%;
-            position: absolute;
-            top: 16%;
-            left: 10px;
-            display: block;
-            background: #000;
-          }
-
-          &__radio {
-            width: 18px;
-            height: 18px;
-            min-width: 18px;
-            border-radius: 50%;
-            border: 2px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-
-            &.checked {
-              background: #000;
-            }
-          }
-
-          &__title {
-            font-size: 13px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 20px;
-            display: grid;
-            align-items: center;
-            grid-template-columns: 24px 1fr;
-            grid-gap: 10px;
-          }
-        }
-      }
-
-      .child_tip__scroll {
-        overflow-x: auto;
-        padding: 20px 0 20px 53px;
-        display: grid;
-        grid-gap: 10px;
-        width: calc(100% - 17px);
-        margin-left: 0;
-        transform: translateX(-19px);
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-
-        .user_tip {
-          background: #fff;
-          border-radius: 12px;
-          padding: 10px;
-          box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.05);
-          max-width: 243px;
-
-          .head {
-            display: grid;
-            grid-template-columns: 49px 1fr;
-            grid-gap: 10px;
-            align-items: center;
-            margin-bottom: 10px;
-          }
-
-          .name {
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 18px;
-          }
-
-          &__caption {
-            color: #315C52;
-            font-size: 13px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 18px;
-            margin-bottom: 10px;
-          }
-
-          &__date {
-            color: rgba(112, 112, 112, 0.80);
-            font-size: 11px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 18px;
-          }
-        }
-      }
-    }
-  }
-}
-
-.btns {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 10px;
-  margin-bottom: 40px;
-}
-
-.join {
-  color: #000;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  display: flex;
-  padding: 12px 14px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background: #B1E530;
-  border-radius: 300px;
-  border: 0;
-  outline: none;
-  font-size: 16px;
-}
-
-.restart {
-  border: 1px solid rgba(0, 0, 0, 0.10);
-  border-radius: 300px;
-  outline: none;
-  display: flex;
-  padding: 12px 14px;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 10px;
-}
-
-.final_caption {
-  text-align: center;
-  margin-top: 15px;
-  color: #315C52;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 19px; /* 118.75% */
-}
-
-.final_arrow {
-  position: absolute;
-  right: 245px;
-  top: -26px;
-}
-
-
-.percent {
-  position: relative;
-}
-
-.percent svg {
-  position: relative;
-  transform: rotate(-90deg);
-  width: 40px !important;
-  height: 40px !important;
-}
-
-.percent svg circle {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #f0f0f0;
-  stroke-width: 10;
-  stroke-linecap: round;
-}
-
-.percent svg circle {
-  stroke-dasharray: 625px;
-  stroke-dashoffset: calc(625px - (625px * var(--percent)) / 100);
-  stroke: #3498db;
-  transition: all .4s ease-in-out;
-}
-
-.percent .number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-}
-
-.percent .number h3 {
-  font-size: 10px;
-}
-
-.percent .number h3 span {
-  font-size: 10px;
-}
-
-.percent .title h2 {
-  margin: 25px 0 0;
-}
-
-
-.percent {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  z-index: 1000;
-}
-
-.percent .number {
-  position: absolute;
-  top: 1px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-
-.percent .number h2 {
-  color: #000;
-  font-weight: 700;
-  font-size: 10px!important;
-  display: block!important;
-  margin: 0!important;
-  transition: 0.5s;
-  letter-spacing: -0.4px;
-}
-
-
-.percent .number h2 span {
-  font-size: 10px;
-  color: #000;
-  letter-spacing: -0.4px;
-}
-
-.percent svg {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  z-index: 1000;
-}
-
-.percent svg circle {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #eee;
-  stroke-width: 5;
-  stroke-linecap: round;
-  transform: translate(5px, 5px);
-}
-
-.percent svg circle:nth-child(2) {
-
-  stroke-dasharray: 93;
-  stroke-dashoffset: 90;
-}
-
-.percent svg circle:nth-child(2) {
-  //stroke-dashoffset: calc(90 - (90 * 10) / 100);
-  stroke: #00ff43;
-}
-
-
-/*
-  Enter and leave animations can use different
-  durations and timing functions.
-*/
-//.slide-left-enter-active {
-//  transition: all 0.3s ease-out;
-//}
-//
-//.slide-left-leave-active {
-//  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-//}
-//
-//.slide-left-enter-from,
-//.slide-left-leave-to {
-//  transform: translateX(20px);
-//  opacity: 0;
-//}
-
-.child_tip__head {
-  display: grid;
-  grid-template-columns: 1fr 40px;
-  grid-gap: 10px;
-}
-
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: all 0.25s ease-out;
-}
-
-.slide-left-enter-from {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.slide-left-leave-to {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-.parent_tips {
-  position: absolute;
-  left: 16px;
-  right: 16px;
-}
-
+@import "src/assets/styles/app";
 </style>
 
 

@@ -9,6 +9,7 @@ export interface ChipItem {
 export interface CountryItem {
     name: string,
     flag: string,
+    bg: string,
     id: number,
     active: boolean,
     chips: Array<ChipItem>,
