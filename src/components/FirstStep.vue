@@ -1,435 +1,453 @@
 <template>
-  <div v-if="breadcrumbs[2].active" class="caption" style="text-align:center;">You did it! 🎉 Take your stress-free
-    adaptation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}
-  </div>
-  <div v-if="breadcrumbs[2].active" class="final_caption">Join the waitlist for the Beta version with the ability to
-    personalise results.
-  </div>
+  <div :style="breadcrumbs[2].active ? 'padding-bottom: 133px;' : ''">
+    <div v-if="breadcrumbs[2].active" class="caption" style="text-align:center;">You did it! 🎉 Take your stress-free
+      adaptation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}
+    </div>
+    <div v-if="breadcrumbs[2].active" class="final_caption">Join the waitlist for the Beta version with the ability to
+      personalise results.
+    </div>
 
-  <div v-if="breadcrumbs[2].active" class="btns">
-    <svg v-if="finish" class="final_arrow" width="146" height="146" viewBox="0 0 146 146" fill="none"
-         xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_3849_6216)">
-        <path
-            d="M86.8738 50.9339C88.4051 38.5568 86.9693 26.2994 80.7711 15.9337C80.5568 15.5752 80.6749 15.1101 81.0335 14.8958C81.3921 14.6816 81.8553 14.7991 82.0695 15.1577C88.4387 25.81 89.9485 38.4013 88.3748 51.1194C86.0285 70.0729 76.8352 89.3121 66.8509 102.756C63.7205 106.972 60.3969 109.988 56.8693 112.807C55.6128 113.811 54.3304 114.79 53.0216 115.789C50.6558 117.594 48.2038 119.466 45.6626 121.671C45.3488 121.945 44.8692 121.911 44.597 121.596C44.323 121.28 44.357 120.802 44.6726 120.528C47.1995 118.336 49.6393 116.479 51.9936 114.688C53.2742 113.713 54.5295 112.758 55.7598 111.778C59.2518 108.998 62.5419 106.022 65.636 101.855C75.4834 88.5954 84.5608 69.6257 86.8738 50.9339Z"
-            fill="black" stroke="black" stroke-width="0.00165138"/>
-        <path
-            d="M44.2438 123.456L44.2437 123.456L44.2436 123.457C44.0339 123.75 43.7842 123.817 43.5813 123.808C43.3784 123.798 43.2223 123.711 43.1998 123.697L43.1993 123.698L43.1998 123.697C43.1529 123.668 43.0268 123.583 42.9361 123.435C42.8454 123.288 42.7901 123.078 42.8847 122.8C42.893 122.775 42.9203 122.717 42.9586 122.639C42.997 122.561 43.0464 122.463 43.099 122.361C43.204 122.157 43.3216 121.934 43.3879 121.811C44.7198 119.334 46.1401 116.914 47.5992 114.51C50.6956 109.413 52.3166 104.36 52.9634 98.387L52.9634 98.387C53.0073 97.9724 53.3816 97.671 53.7956 97.7167L53.7956 97.7167C54.2102 97.7606 54.5115 98.1349 54.4658 98.5489C53.795 104.754 52.1084 110.001 48.891 115.295C47.774 117.135 46.6807 118.982 45.6337 120.86L45.6344 120.86L45.6351 120.861L45.6353 120.861L45.6348 120.861C46.2593 120.537 46.9897 120.182 47.802 119.809C50.8356 118.419 55.0475 116.805 59.4218 115.74C63.796 114.676 68.3324 114.161 72.0151 114.973C72.4231 115.063 72.679 115.467 72.5892 115.875C72.4993 116.283 72.0967 116.541 71.6887 116.451C68.149 115.671 63.7927 116.187 59.5925 117.231C55.3922 118.275 51.3479 119.848 48.4319 121.183C46.6943 121.981 45.359 122.693 44.6392 123.165C44.4858 123.265 44.3189 123.397 44.261 123.443C44.2531 123.449 44.2473 123.454 44.2438 123.456ZM43.0447 122.534L43.044 122.533L43.044 122.533C43.0398 122.539 43.0356 122.545 43.0316 122.55C43.0223 122.562 43.014 122.573 43.0078 122.584L43.0085 122.584L43.0092 122.585L43.0092 122.585C43.0151 122.576 43.0213 122.567 43.0275 122.559L43.0302 122.555C43.0354 122.548 43.0405 122.541 43.0454 122.534L43.0453 122.534L43.0447 122.534Z"
-            fill="black" stroke="black" stroke-width="0.00165138"/>
-      </g>
-      <defs>
-        <clipPath id="clip0_3849_6216">
-          <rect width="115.676" height="115.676" fill="white" transform="translate(35.0957) rotate(17.662)"/>
-        </clipPath>
-      </defs>
-    </svg>
-    <button class="restart" @click="restart">
-      <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_3849_6202)">
-          <path d="M1.25 3V7.5H5.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M17.75 15V10.5H13.25" stroke="black" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round"/>
+    <div v-if="breadcrumbs[2].active" class="btns">
+      <svg v-if="finish" class="final_arrow" width="146" height="146" viewBox="0 0 146 146" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3849_6216)">
           <path
-              d="M15.8675 6.75018C15.4871 5.67527 14.8407 4.71423 13.9884 3.95674C13.1361 3.19925 12.1059 2.67 10.9938 2.41837C9.88167 2.16674 8.72393 2.20093 7.62861 2.51776C6.53328 2.83458 5.53606 3.42371 4.73 4.23018L1.25 7.50018M17.75 10.5002L14.27 13.7702C13.4639 14.5766 12.4667 15.1658 11.3714 15.4826C10.2761 15.7994 9.11833 15.8336 8.00621 15.582C6.8941 15.3304 5.86385 14.8011 5.0116 14.0436C4.15935 13.2861 3.51288 12.3251 3.1325 11.2502"
-              stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              d="M86.8738 50.9339C88.4051 38.5568 86.9693 26.2994 80.7711 15.9337C80.5568 15.5752 80.6749 15.1101 81.0335 14.8958C81.3921 14.6816 81.8553 14.7991 82.0695 15.1577C88.4387 25.81 89.9485 38.4013 88.3748 51.1194C86.0285 70.0729 76.8352 89.3121 66.8509 102.756C63.7205 106.972 60.3969 109.988 56.8693 112.807C55.6128 113.811 54.3304 114.79 53.0216 115.789C50.6558 117.594 48.2038 119.466 45.6626 121.671C45.3488 121.945 44.8692 121.911 44.597 121.596C44.323 121.28 44.357 120.802 44.6726 120.528C47.1995 118.336 49.6393 116.479 51.9936 114.688C53.2742 113.713 54.5295 112.758 55.7598 111.778C59.2518 108.998 62.5419 106.022 65.636 101.855C75.4834 88.5954 84.5608 69.6257 86.8738 50.9339Z"
+              fill="black" stroke="black" stroke-width="0.00165138"/>
+          <path
+              d="M44.2438 123.456L44.2437 123.456L44.2436 123.457C44.0339 123.75 43.7842 123.817 43.5813 123.808C43.3784 123.798 43.2223 123.711 43.1998 123.697L43.1993 123.698L43.1998 123.697C43.1529 123.668 43.0268 123.583 42.9361 123.435C42.8454 123.288 42.7901 123.078 42.8847 122.8C42.893 122.775 42.9203 122.717 42.9586 122.639C42.997 122.561 43.0464 122.463 43.099 122.361C43.204 122.157 43.3216 121.934 43.3879 121.811C44.7198 119.334 46.1401 116.914 47.5992 114.51C50.6956 109.413 52.3166 104.36 52.9634 98.387L52.9634 98.387C53.0073 97.9724 53.3816 97.671 53.7956 97.7167L53.7956 97.7167C54.2102 97.7606 54.5115 98.1349 54.4658 98.5489C53.795 104.754 52.1084 110.001 48.891 115.295C47.774 117.135 46.6807 118.982 45.6337 120.86L45.6344 120.86L45.6351 120.861L45.6353 120.861L45.6348 120.861C46.2593 120.537 46.9897 120.182 47.802 119.809C50.8356 118.419 55.0475 116.805 59.4218 115.74C63.796 114.676 68.3324 114.161 72.0151 114.973C72.4231 115.063 72.679 115.467 72.5892 115.875C72.4993 116.283 72.0967 116.541 71.6887 116.451C68.149 115.671 63.7927 116.187 59.5925 117.231C55.3922 118.275 51.3479 119.848 48.4319 121.183C46.6943 121.981 45.359 122.693 44.6392 123.165C44.4858 123.265 44.3189 123.397 44.261 123.443C44.2531 123.449 44.2473 123.454 44.2438 123.456ZM43.0447 122.534L43.044 122.533L43.044 122.533C43.0398 122.539 43.0356 122.545 43.0316 122.55C43.0223 122.562 43.014 122.573 43.0078 122.584L43.0085 122.584L43.0092 122.585L43.0092 122.585C43.0151 122.576 43.0213 122.567 43.0275 122.559L43.0302 122.555C43.0354 122.548 43.0405 122.541 43.0454 122.534L43.0453 122.534L43.0447 122.534Z"
+              fill="black" stroke="black" stroke-width="0.00165138"/>
         </g>
         <defs>
-          <clipPath id="clip0_3849_6202">
-            <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
+          <clipPath id="clip0_3849_6216">
+            <rect width="115.676" height="115.676" fill="white" transform="translate(35.0957) rotate(17.662)"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <button class="restart" @click="restart">
+        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_3849_6202)">
+            <path d="M1.25 3V7.5H5.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.75 15V10.5H13.25" stroke="black" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <path
+                d="M15.8675 6.75018C15.4871 5.67527 14.8407 4.71423 13.9884 3.95674C13.1361 3.19925 12.1059 2.67 10.9938 2.41837C9.88167 2.16674 8.72393 2.20093 7.62861 2.51776C6.53328 2.83458 5.53606 3.42371 4.73 4.23018L1.25 7.50018M17.75 10.5002L14.27 13.7702C13.4639 14.5766 12.4667 15.1658 11.3714 15.4826C10.2761 15.7994 9.11833 15.8336 8.00621 15.582C6.8941 15.3304 5.86385 14.8011 5.0116 14.0436C4.15935 13.2861 3.51288 12.3251 3.1325 11.2502"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_3849_6202">
+              <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
+            </clipPath>
+          </defs>
+        </svg>
+
+        Restart
+      </button>
+      <button class="join" data-tf-popup="mNjD6YTw" data-tf-opacity="100" data-tf-size="100" data-tf-iframe-props="title=Globio Lead Generation Form" data-tf-auto-close="1000" data-tf-transitive-search-params data-tf-medium="snippet">Join Waitlist</button>
+<!--      <button class="join" @click="restart">Join waitlist</button>-->
+    </div>
+
+    <div v-if="!breadcrumbs[2].active" class="breadcrumbs">
+      <div
+          v-for="(item, index ) in breadcrumbs"
+          :key="item.id"
+          :class="item.active ? 'breadcrumbs__item__active' : ''"
+          class="breadcrumbs__item"
+      >
+        <div class="step" @click="handleBreadCrumbs(item)">{{ index + 1 }}</div>
+        <div class="info">
+          <h3>{{ item.title }}</h3>
+          <div class="caption">{{ item.caption }}</div>
+        </div>
+
+        <svg v-if="index !== 2" width="21" height="43" viewBox="0 0 21 43" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L18.6716 18.6716C20.2337 20.2337 20.2337 22.7663 18.6716 24.3284L1 42" stroke="#C7DCCD"
+                stroke-width="1.5"/>
+        </svg>
+
+      </div>
+    </div>
+
+
+    <div class="mob_titles">
+      <h3 v-if="!breadcrumbs[2].active">
+        <template v-if="breadcrumbs[1].active">Choose a Country</template>
+        <template v-else>Set You Basics</template>
+      </h3>
+      <div v-if="!breadcrumbs[2].active" class="caption">
+        <template v-if="breadcrumbs[1].active">We generated a special adaptation list for selected country</template>
+        <template v-else>Pick up to 5 parameters, and we'll generate 3 countries based on them</template>
+      </div>
+    </div>
+
+    <div
+        class="globio_content"
+        :class="finish ? 'finished_step' : ''"
+        :style="finish ? `background-image: url(${selectedCountry[0].bg});background-size: contain;background-position: center;background-repeat: no-repeat;`: ''"
+    >
+      <svg v-if="breadcrumbs[0].active" class="arrow1" width="151" height="150" viewBox="0 0 151 150" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3569_9783)">
+          <path
+              d="M56.9934 59.0807C52.4769 48.3567 50.6547 36.9872 53.5886 26.1072C53.6899 25.7309 53.4658 25.3433 53.0895 25.242C52.7132 25.1407 52.3272 25.3637 52.2259 25.74C49.2113 36.9207 51.0518 48.6088 55.693 59.6282C62.6105 76.0498 75.748 90.9899 88.1249 100.526C92.0055 103.517 95.7551 105.381 99.6378 107.016C101.021 107.599 102.421 108.152 103.849 108.717C106.432 109.738 109.108 110.796 111.95 112.13C112.301 112.297 112.723 112.144 112.887 111.792C113.053 111.439 112.901 111.019 112.548 110.853C109.723 109.526 107.061 108.479 104.493 107.468C103.096 106.918 101.726 106.379 100.373 105.811C96.5319 104.202 92.8225 102.365 88.9867 99.4087C76.7798 90.0034 63.8146 75.2758 56.9934 59.0807Z"
+              fill="black" stroke="black" stroke-width="0.00165138"/>
+          <path
+              d="M113.677 113.374L113.677 113.374L113.678 113.374C113.94 113.584 114.182 113.581 114.361 113.521C114.541 113.461 114.659 113.343 114.676 113.325L114.676 113.325L114.676 113.325C114.71 113.287 114.802 113.178 114.846 113.023C114.89 112.867 114.886 112.665 114.731 112.439C114.717 112.419 114.678 112.374 114.624 112.313C114.569 112.253 114.5 112.178 114.427 112.1C114.281 111.943 114.119 111.773 114.028 111.68C112.204 109.794 110.314 107.981 108.394 106.193C104.32 102.403 101.582 98.2774 99.4851 93.0789L99.4851 93.0789C99.3405 92.7179 98.928 92.5423 98.5679 92.6884L98.5679 92.6884C98.2069 92.8331 98.0313 93.2456 98.1774 93.6056C100.355 99.0069 103.201 103.289 107.433 107.226C108.903 108.594 110.354 109.975 111.77 111.395L111.77 111.396L111.769 111.397L111.769 111.397L111.77 111.397C111.127 111.264 110.381 111.131 109.557 111.002C106.48 110.525 102.289 110.144 98.0914 110.299C93.8938 110.453 89.6903 111.143 86.59 112.807C86.2465 112.991 86.1193 113.418 86.3035 113.762C86.4877 114.105 86.9147 114.235 87.2582 114.051C90.2383 112.452 94.2803 111.809 98.3165 111.68C102.353 111.552 106.383 111.938 109.34 112.396C111.103 112.671 112.482 112.971 113.248 113.213C113.411 113.263 113.595 113.339 113.658 113.366C113.667 113.37 113.674 113.372 113.677 113.374ZM114.52 112.241L114.52 112.24L114.52 112.24C114.526 112.245 114.531 112.248 114.536 112.252C114.547 112.261 114.557 112.269 114.566 112.277L114.565 112.277L114.565 112.278L114.565 112.278C114.557 112.271 114.549 112.265 114.542 112.259L114.538 112.257C114.532 112.252 114.525 112.247 114.519 112.242L114.519 112.242L114.52 112.241Z"
+              fill="black" stroke="black" stroke-width="0.00165138"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_3569_9783">
+            <rect width="107.929" height="107.929" fill="white"
+                  transform="matrix(-0.834383 0.551185 0.551185 0.834383 90.5527 0.208008)"/>
           </clipPath>
         </defs>
       </svg>
 
-      Restart
-    </button>
-    <button class="join" @click="restart">Join waitlist</button>
-  </div>
-
-  <div v-if="!breadcrumbs[2].active" class="breadcrumbs">
-    <div
-        v-for="(item, index ) in breadcrumbs"
-        :key="item.id"
-        :class="item.active ? 'breadcrumbs__item__active' : ''"
-        class="breadcrumbs__item"
-    >
-      <div class="step" @click="handleBreadCrumbs(item)">{{ index + 1 }}</div>
-      <div class="info">
-        <h3>{{ item.title }}</h3>
-        <div class="caption">{{ item.caption }}</div>
-      </div>
-
-      <svg v-if="index !== 2" width="21" height="43" viewBox="0 0 21 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L18.6716 18.6716C20.2337 20.2337 20.2337 22.7663 18.6716 24.3284L1 42" stroke="#C7DCCD"
-              stroke-width="1.5"/>
-      </svg>
-
-    </div>
-  </div>
-
-
-  <div class="mob_titles">
-    <h3 v-if="!breadcrumbs[2].active">
-      <template v-if="breadcrumbs[1].active">Choose a Country</template>
-      <template v-else>Set You Basics</template>
-    </h3>
-    <div v-if="!breadcrumbs[2].active" class="caption">
-      <template v-if="breadcrumbs[1].active">We generated a special adaptation list for selected country</template>
-      <template v-else>Pick up to 5 parameters, and we'll generate 3 countries based on them</template>
-    </div>
-  </div>
-
-  <div
-      class="globio_content"
-      :class="finish ? 'finished_step' : ''"
-      :style="finish ? `background-image: url(${selectedCountry[0].bg});background-size: contain;background-position: center;background-repeat: no-repeat;`: ''"
-  >
-    <svg v-if="breadcrumbs[0].active" class="arrow1" width="151" height="150" viewBox="0 0 151 150" fill="none"
-         xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_3569_9783)">
-        <path
-            d="M56.9934 59.0807C52.4769 48.3567 50.6547 36.9872 53.5886 26.1072C53.6899 25.7309 53.4658 25.3433 53.0895 25.242C52.7132 25.1407 52.3272 25.3637 52.2259 25.74C49.2113 36.9207 51.0518 48.6088 55.693 59.6282C62.6105 76.0498 75.748 90.9899 88.1249 100.526C92.0055 103.517 95.7551 105.381 99.6378 107.016C101.021 107.599 102.421 108.152 103.849 108.717C106.432 109.738 109.108 110.796 111.95 112.13C112.301 112.297 112.723 112.144 112.887 111.792C113.053 111.439 112.901 111.019 112.548 110.853C109.723 109.526 107.061 108.479 104.493 107.468C103.096 106.918 101.726 106.379 100.373 105.811C96.5319 104.202 92.8225 102.365 88.9867 99.4087C76.7798 90.0034 63.8146 75.2758 56.9934 59.0807Z"
-            fill="black" stroke="black" stroke-width="0.00165138"/>
-        <path
-            d="M113.677 113.374L113.677 113.374L113.678 113.374C113.94 113.584 114.182 113.581 114.361 113.521C114.541 113.461 114.659 113.343 114.676 113.325L114.676 113.325L114.676 113.325C114.71 113.287 114.802 113.178 114.846 113.023C114.89 112.867 114.886 112.665 114.731 112.439C114.717 112.419 114.678 112.374 114.624 112.313C114.569 112.253 114.5 112.178 114.427 112.1C114.281 111.943 114.119 111.773 114.028 111.68C112.204 109.794 110.314 107.981 108.394 106.193C104.32 102.403 101.582 98.2774 99.4851 93.0789L99.4851 93.0789C99.3405 92.7179 98.928 92.5423 98.5679 92.6884L98.5679 92.6884C98.2069 92.8331 98.0313 93.2456 98.1774 93.6056C100.355 99.0069 103.201 103.289 107.433 107.226C108.903 108.594 110.354 109.975 111.77 111.395L111.77 111.396L111.769 111.397L111.769 111.397L111.77 111.397C111.127 111.264 110.381 111.131 109.557 111.002C106.48 110.525 102.289 110.144 98.0914 110.299C93.8938 110.453 89.6903 111.143 86.59 112.807C86.2465 112.991 86.1193 113.418 86.3035 113.762C86.4877 114.105 86.9147 114.235 87.2582 114.051C90.2383 112.452 94.2803 111.809 98.3165 111.68C102.353 111.552 106.383 111.938 109.34 112.396C111.103 112.671 112.482 112.971 113.248 113.213C113.411 113.263 113.595 113.339 113.658 113.366C113.667 113.37 113.674 113.372 113.677 113.374ZM114.52 112.241L114.52 112.24L114.52 112.24C114.526 112.245 114.531 112.248 114.536 112.252C114.547 112.261 114.557 112.269 114.566 112.277L114.565 112.277L114.565 112.278L114.565 112.278C114.557 112.271 114.549 112.265 114.542 112.259L114.538 112.257C114.532 112.252 114.525 112.247 114.519 112.242L114.519 112.242L114.52 112.241Z"
-            fill="black" stroke="black" stroke-width="0.00165138"/>
-      </g>
-      <defs>
-        <clipPath id="clip0_3569_9783">
-          <rect width="107.929" height="107.929" fill="white"
-                transform="matrix(-0.834383 0.551185 0.551185 0.834383 90.5527 0.208008)"/>
-        </clipPath>
-      </defs>
-    </svg>
-
-    <!-- step 1   -->
-    <div
-        v-if="breadcrumbs[0].active"
-        class="chips_block"
-    >
-      <div class="chips_block__row">
-        <button
-            v-for="chip in chips"
-            :key="chip.id"
-            :disabled="chip.disabled"
-            class="chips_block__item"
-            @click="chooseChip(chip)"
-        >
-          {{ chip.label }}
-        </button>
-
-        <button class="chips_block__item" disabled>􀎡 Many more</button>
-      </div>
-
-      <div class="chips_block__input">
-        <div
-            v-for="chip in tempChips"
-            :key="chip.id"
-            class="active_chip"
-        >
-          {{ chip.label }}
-          <svg @click="removeActiveChip(chip)" width="25" height="24" viewBox="0 0 25 24" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
-                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M15.5 9L9.5 15" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9.5 9L15.5 15" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </div>
-
-      <div class="skip" @click="onSkip">Skip, I know my relocation country</div>
-      <button :disabled="tempChips.length < 1" class="next" @click="toNextStep(1)">Next</button>
-    </div>
-
-    <div v-if="breadcrumbs[1].active && breadcrumbs[1].loading" class="loader">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-           style="margin: auto; display: block;" width="164px" height="164px"
-           viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <circle cx="36" cy="50" r="4" fill="#43825c">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate>
-        </circle>
-        <circle cx="45" cy="53" r="4" fill="#57a876">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.16778523489932887s"
-                   repeatCount="indefinite"></animate>
-        </circle>
-        <circle cx="54" cy="50" r="4" fill="#6cc08f">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.33557046979865773s"
-                   repeatCount="indefinite"></animate>
-        </circle>
-        <circle cx="63" cy="47" r="4" fill="#85cca4">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.5033557046979866s" repeatCount="indefinite"></animate>
-        </circle>
-      </svg>
-      Globio generating 3 countries for you...
-    </div>
-    <div v-if="breadcrumbs[2].active && breadcrumbs[2].loading" class="loader">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-           style="margin: auto; display: block;" width="164px" height="164px"
-           viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <circle cx="36" cy="50" r="4" fill="#43825c">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate>
-        </circle>
-        <circle cx="45" cy="53" r="4" fill="#57a876">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.16778523489932887s"
-                   repeatCount="indefinite"></animate>
-        </circle>
-        <circle cx="54" cy="50" r="4" fill="#6cc08f">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.33557046979865773s"
-                   repeatCount="indefinite"></animate>
-        </circle>
-        <circle cx="63" cy="47" r="4" fill="#85cca4">
-          <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
-                   keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.5033557046979866s" repeatCount="indefinite"></animate>
-        </circle>
-      </svg>
-      Globio generating adaptation list for
-      you...
-    </div>
-
-
-    <div
-        v-if="breadcrumbs[1].active && !breadcrumbs[1].loading"
-        class="second"
-    >
-
-      <!--   If skip   -->
-      <div v-if="skip" class="skip_counties">
-        <div class="caption">There are many countries, but we are ready to show only 5 countries in the demo.<br>
-          Please,
-          select one of it
-        </div>
-        <div class="countries_row">
-          <div
-              class="country"
-              v-for="country in countries"
-              :key="country.id"
-              :class="country.active ? 'country__active' : ''"
+      <!-- step 1   -->
+      <div
+          v-if="breadcrumbs[0].active"
+          class="chips_block"
+      >
+        <div class="chips_block__row">
+          <button
+              v-for="chip in chips"
+              :key="chip.id"
+              :disabled="chip.disabled"
+              class="chips_block__item"
+              @click="chooseChip(chip)"
           >
-            <div class="country__title">
-              {{ country.flag }}
-              {{ country.name }}
-            </div>
-            <button class="country__button" @click="selectCountry(country)">Select</button>
+            {{ chip.label }}
+          </button>
+
+          <button class="chips_block__item" disabled>
+            <svg width="11" height="16" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.75781 15.3281C0.609375 15.3281 0 14.7031 0 13.4688V8.08594C0 7 0.476562 6.39062 1.36719 6.25781V4.36719C1.36719 1.42969 3.28906 0 5.32812 0C7.375 0 9.29688 1.42969 9.29688 4.36719V6.25781C10.1953 6.39062 10.6641 7 10.6641 8.08594V13.4688C10.6641 14.7031 10.0547 15.3281 8.90625 15.3281H1.75781ZM2.60938 4.19531V6.23438H8.0625V4.19531C8.0625 2.22656 6.78906 1.17969 5.32812 1.17969C3.86719 1.17969 2.60938 2.22656 2.60938 4.19531Z" fill="#707070" fill-opacity="0.8"/>
+            </svg>
+            Many more
+          </button>
+        </div>
+
+        <div class="chips_block__input">
+          <div
+              v-for="chip in tempChips"
+              :key="chip.id"
+              class="active_chip"
+          >
+            {{ chip.label }}
+            <svg @click="removeActiveChip(chip)" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                  stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.5 9L9.5 15" stroke="black" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <path d="M9.5 9L15.5 15" stroke="black" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
           </div>
         </div>
+
+        <div class="skip" @click="onSkip">Skip, I know my relocation country</div>
+        <button :disabled="tempChips.length < 1" class="next" @click="toNextStep(1)">Next</button>
       </div>
 
-      <!--   2 step   -->
-      <div class="second_grid">
-        <ul class="counties">
-          <li
-              v-for="country in displayedCountries"
-              :key="country.id"
-              :class="country.active ? 'country__active' : ''"
-          >
-            <div class="head">
-              <div class="title">
+      <div v-if="breadcrumbs[1].active && breadcrumbs[1].loading" class="loader">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             style="margin: auto; display: block;" width="164px" height="164px"
+             viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+          <circle cx="36" cy="50" r="4" fill="#43825c">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="45" cy="53" r="4" fill="#57a876">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.16778523489932887s"
+                     repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="54" cy="50" r="4" fill="#6cc08f">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.33557046979865773s"
+                     repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="63" cy="47" r="4" fill="#85cca4">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.5033557046979866s"
+                     repeatCount="indefinite"></animate>
+          </circle>
+        </svg>
+        Globio generating 3 countries for you...
+      </div>
+      <div v-if="breadcrumbs[2].active && breadcrumbs[2].loading" class="loader">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             style="margin: auto; display: block;" width="164px" height="164px"
+             viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+          <circle cx="36" cy="50" r="4" fill="#43825c">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="45" cy="53" r="4" fill="#57a876">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.16778523489932887s"
+                     repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="54" cy="50" r="4" fill="#6cc08f">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.33557046979865773s"
+                     repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="63" cy="47" r="4" fill="#85cca4">
+            <animate attributeName="cy" values="47;53;47" times="0;0.5;1" dur="0.6711409395973155s" calcMode="spline"
+                     keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.5033557046979866s"
+                     repeatCount="indefinite"></animate>
+          </circle>
+        </svg>
+        Globio generating adaptation list for
+        you...
+      </div>
+
+
+      <div
+          v-if="breadcrumbs[1].active && !breadcrumbs[1].loading"
+          class="second"
+      >
+
+        <!--   If skip   -->
+        <div v-if="skip" class="skip_counties">
+          <div class="caption">There are many countries, but we are ready to show only 5 countries in the demo.<br>
+            Please,
+            select one of it
+          </div>
+          <div class="countries_row">
+            <div
+                class="country"
+                v-for="country in countries"
+                :key="country.id"
+                :class="country.active ? 'country__active' : ''"
+            >
+              <div class="country__title">
                 {{ country.flag }}
                 {{ country.name }}
               </div>
-              <button
-                  class="btn"
-                  @click="selectCountry(country)"
-              >
-                Select
-              </button>
+              <button class="country__button" @click="selectCountry(country)">Select</button>
             </div>
+          </div>
+        </div>
 
-            <div
-                class="chip"
-                v-for="chip in country.chips"
+        <!--   2 step   -->
+        <div class="second_grid">
+          <ul class="counties">
+            <li
+                v-for="country in displayedCountries"
+                :key="country.id"
+                :class="country.active ? 'country__active' : ''"
             >
-              <template v-if="chip.active">
-                <p><b>{{ chip.label }}:</b> {{ chip.caption }}</p>
-              </template>
-            </div>
-          </li>
-        </ul>
+              <div class="head">
+                <div class="title">
+                  {{ country.flag }}
+                  {{ country.name }}
+                </div>
+                <button
+                    class="btn"
+                    @click="selectCountry(country)"
+                >
+                  Select
+                </button>
+              </div>
 
-      </div>
-      <button
-          v-if="skip"
-          :disabled="!countries.some(item => item.active === true)"
-          class="next"
-          @click="toNextStep(2)"
-      >
-        Next
-      </button>
+              <div
+                  class="chip"
+                  v-for="chip in country.chips"
+              >
+                <template v-if="chip.active">
+                  <p><b>{{ chip.label }}:</b> {{ chip.caption }}</p>
+                </template>
+              </div>
+            </li>
+          </ul>
 
-      <div v-if="!skip" class="not_skip">
+        </div>
         <button
-            :disabled="tempChips.length < 1  || !selectedCountry.length"
+            v-if="skip"
+            :disabled="!countries.some(item => item.active === true)"
             class="next"
             @click="toNextStep(2)"
         >
           Next
         </button>
-      </div>
-    </div>
 
-    <!--  3 step  -->
-    <div v-if="breadcrumbs[2].active && !breadcrumbs[2].loading" class="third">
-      <div
-          class="app"
-          :style="selectedTip[0].active ? `background-color: ${selectedTip[0].color}` : 'background-color: #fff;'"
-      >
-        <Transition name="slide-left">
-        <div v-if="!selectedTip[0].active" class="parent_tips">
-          <h2>Relocation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}</h2>
-          <div class="progress">
-            <div
-                class="bar"
-                :style="`width: ${progressBarPercentage(childTipsLength)}%`"
-            ></div>
-          </div>
-
-
-          <div class="tips">
-            <div
-                class="tip"
-                v-for="tip in selectedCountry[0].tips"
-                :style="`background: ${tip.color};`"
-                @click="setActiveTip(tip)"
-            >
-              <!--              <div-->
-              <!--                  class="tip__radio"-->
-              <!--                  @click="checkedTip(tip)"-->
-              <!--                  :class="tip.checked ? 'checked' : ''"-->
-              <!--                  :style="`background: ${tip.color};box-shadow: 0px 0px 0px 2px ${tip.color};`"-->
-              <!--              >-->
-              <!--                <svg v-if="tip.checked" width="30" height="30" viewBox="0 0 30 30" fill="none"-->
-              <!--                     xmlns="http://www.w3.org/2000/svg">-->
-              <!--                  <circle cx="15" cy="15" r="12.75" fill="#141414" stroke="#141414" stroke-width="3.5"/>-->
-              <!--                  <circle cx="15" cy="15" r="10.25" fill="#141414" stroke="#141414" stroke-width="1.5"/>-->
-              <!--                  <path d="M9 14.9797L12.4904 19L20 11" stroke="#CDF765" stroke-width="1.5" stroke-linecap="round"-->
-              <!--                        stroke-linejoin="round"/>-->
-              <!--                </svg>-->
-              <!--              </div>-->
-
-              <div class="percent">
-                <svg>
-                  <circle :style="`stroke: ${tip.progressColor};`" cx="15" cy="15" r="15"></circle>
-                  <circle
-                      cx="15"
-                      cy="15"
-                      r="15"
-                      :style="`stroke-dashoffset: calc(90 - (90 * ${tip.progress}) / 100);stroke: ${tip.progressBar};`"
-                  >
-
-                  </circle>
-                </svg>
-                <div class="number">
-                  <h2>{{ tip.progress.toFixed(0) }}<span>%</span></h2>
-                </div>
-              </div>
-
-              <div class="tip__title">{{ tip.title }}</div>
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 40 0)" fill="white"/>
-                <path d="M17 26L23 20L17 14" stroke="#141414" stroke-width="1.5" stroke-linecap="round"
-                      stroke-linejoin="round"/>
-              </svg>
-
-            </div>
-          </div>
+        <div v-if="!skip" class="not_skip">
+          <button
+              :disabled="tempChips.length < 1  || !selectedCountry.length"
+              class="next"
+              @click="toNextStep(2)"
+          >
+            Next
+          </button>
         </div>
+      </div>
 
+      <!--  3 step  -->
+      <div v-if="breadcrumbs[2].active && !breadcrumbs[2].loading" class="third">
         <div
-            v-else
-            class="child_tips"
+            class="app"
+            :style="selectedTip[0].active ? `background-color: ${selectedTip[0].color}` : 'background-color: #fff;'"
         >
-          <div class="child_tip__head">
-            <h2 class="title" @click="backToTips">
-              <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="0.5" width="40" height="40" rx="20" fill="white"/>
-                <path d="M23 26.5L17 20.5L23 14.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round"
-                      stroke-linejoin="round"/>
-              </svg>
-
-              {{ selectedTip[0].title }}
-            </h2>
-
-            <div class="percent">
-              <svg>
-                <circle :style="`stroke: ${selectedTip[0].progressColor};`" cx="15" cy="15" r="15"></circle>
-                <circle
-                    cx="15"
-                    cy="15"
-                    r="15"
-                    :style="`stroke-dashoffset: calc(90 - (90 * ${selectedTip[0].progress}) / 100);stroke: ${selectedTip[0].progressBar};`"
-                >
-
-                </circle>
-              </svg>
-              <div class="number">
-                <h2>{{ selectedTip[0].progress.toFixed(0) }}<span>%</span></h2>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="child_tips__row">
-            <div
-                class="child_tip"
-                v-for="childTip in selectedTip[0].childTips"
-            >
-              <div class="child_tip__title">
+          <Transition name="slide-left">
+            <div v-if="!selectedTip[0].active" class="parent_tips">
+              <h2>Relocation to {{ selectedCountry[0]?.name }} {{ selectedCountry[0]?.flag }}</h2>
+              <div class="progress">
                 <div
-                    class="child_tip__radio"
-                    :class="childTip.checked ? 'checked' : ''"
-                    @click="setActiveChildTip(childTip)"
+                    class="bar"
+                    :style="`width: ${progressBarPercentage(childTipsLength)}%`"
+                ></div>
+              </div>
+
+
+              <div class="tips">
+                <div
+                    class="tip"
+                    v-for="tip in selectedCountry[0].tips"
+                    :style="`background: ${tip.color};`"
+                    @click="setActiveTip(tip)"
                 >
-                  <svg v-if="childTip.checked" width="30" height="30" viewBox="0 0 30 30" fill="none"
+                  <!--              <div-->
+                  <!--                  class="tip__radio"-->
+                  <!--                  @click="checkedTip(tip)"-->
+                  <!--                  :class="tip.checked ? 'checked' : ''"-->
+                  <!--                  :style="`background: ${tip.color};box-shadow: 0px 0px 0px 2px ${tip.color};`"-->
+                  <!--              >-->
+                  <!--                <svg v-if="tip.checked" width="30" height="30" viewBox="0 0 30 30" fill="none"-->
+                  <!--                     xmlns="http://www.w3.org/2000/svg">-->
+                  <!--                  <circle cx="15" cy="15" r="12.75" fill="#141414" stroke="#141414" stroke-width="3.5"/>-->
+                  <!--                  <circle cx="15" cy="15" r="10.25" fill="#141414" stroke="#141414" stroke-width="1.5"/>-->
+                  <!--                  <path d="M9 14.9797L12.4904 19L20 11" stroke="#CDF765" stroke-width="1.5" stroke-linecap="round"-->
+                  <!--                        stroke-linejoin="round"/>-->
+                  <!--                </svg>-->
+                  <!--              </div>-->
+
+                  <div class="percent">
+                    <svg>
+                      <circle :style="`stroke: ${tip.progressColor};`" cx="15" cy="15" r="15"></circle>
+                      <circle
+                          cx="15"
+                          cy="15"
+                          r="15"
+                          :style="`stroke-dashoffset: calc(90 - (90 * ${tip.progress}) / 100);stroke: ${tip.progressBar};`"
+                      >
+
+                      </circle>
+                    </svg>
+                    <div class="number">
+                      <h2>{{ tip.progress.toFixed(0) }}<span>%</span></h2>
+                    </div>
+                  </div>
+
+                  <div class="tip__title">{{ tip.title }}</div>
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="15" cy="15" r="12.75" fill="#141414" stroke="#141414" stroke-width="3.5"/>
-                    <circle cx="15" cy="15" r="10.25" fill="#141414" stroke="#141414" stroke-width="1.5"/>
-                    <path d="M9 14.9797L12.4904 19L20 11" stroke="#CDF765" stroke-width="1.5" stroke-linecap="round"
+                    <rect width="40" height="40" rx="20" transform="matrix(-1 0 0 1 40 0)" fill="white"/>
+                    <path d="M17 26L23 20L17 14" stroke="#141414" stroke-width="1.5" stroke-linecap="round"
                           stroke-linejoin="round"/>
                   </svg>
-                </div>
-                {{ childTip.title }}
-              </div>
 
-              <div
-                  class="child_tip__scroll"
-                  :style="`grid-template-columns: repeat(${childTip.userTips.length}, 243px)`"
-              >
-                <div
-                    class="user_tip"
-                    v-for="userTip in childTip.userTips"
-                >
-                  <div class="head">
-                    <img
-                        width="49"
-                        height="49"
-                        :src="userTip.ava"
-                        :alt="userTip.name"
+                </div>
+              </div>
+            </div>
+
+            <div
+                v-else
+                class="child_tips"
+            >
+              <div class="child_tip__head">
+                <h2 class="title" @click="backToTips">
+                  <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="0.5" width="40" height="40" rx="20" fill="white"/>
+                    <path d="M23 26.5L17 20.5L23 14.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                  </svg>
+
+                  {{ selectedTip[0].title }}
+                </h2>
+
+                <div class="percent">
+                  <svg>
+                    <circle :style="`stroke: ${selectedTip[0].progressColor};`" cx="15" cy="15" r="15"></circle>
+                    <circle
+                        cx="15"
+                        cy="15"
+                        r="15"
+                        :style="`stroke-dashoffset: calc(90 - (90 * ${selectedTip[0].progress}) / 100);stroke: ${selectedTip[0].progressBar};`"
                     >
 
-                    <div class="name">{{ userTip.name }}</div>
+                    </circle>
+                  </svg>
+                  <div class="number">
+                    <h2>{{ selectedTip[0].progress.toFixed(0) }}<span>%</span></h2>
                   </div>
-
-                  <div class="user_tip__caption">
-                    {{ userTip.caption }}
-                  </div>
-
-                  <div class="user_tip__date">{{ userTip.date }}</div>
                 </div>
               </div>
 
+
+              <div class="child_tips__row">
+                <div
+                    class="child_tip"
+                    v-for="childTip in selectedTip[0].childTips"
+                >
+                  <div class="child_tip__title">
+                    <div
+                        class="child_tip__radio"
+                        :class="childTip.checked ? 'checked' : ''"
+                        @click="setActiveChildTip(childTip)"
+                    >
+                      <svg v-if="childTip.checked" width="30" height="30" viewBox="0 0 30 30" fill="none"
+                           xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="15" cy="15" r="12.75" fill="#141414" stroke="#141414" stroke-width="3.5"/>
+                        <circle cx="15" cy="15" r="10.25" fill="#141414" stroke="#141414" stroke-width="1.5"/>
+                        <path d="M9 14.9797L12.4904 19L20 11" stroke="#CDF765" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    {{ childTip.title }}
+                  </div>
+
+                  <div
+                      class="child_tip__scroll"
+                      :style="`grid-template-columns: repeat(${childTip.userTips.length}, 243px)`"
+                  >
+                    <div
+                        class="user_tip"
+                        v-for="userTip in childTip.userTips"
+                    >
+                      <div class="head">
+                        <img
+                            width="49"
+                            height="49"
+                            :src="userTip.ava"
+                            :alt="userTip.name"
+                        >
+
+                        <div class="name">{{ userTip.name }}</div>
+                      </div>
+
+                      <div class="user_tip__caption">
+                        {{ userTip.caption }}
+                      </div>
+
+                      <div class="user_tip__date">{{ userTip.date }}</div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="end_text"><div>🎉</div>
+                  <div>Now You Know All About</div>
+                  <b>Renting an apartment in {{selectedCountry[0].name}}</b>
+                </div>
+              </div>
             </div>
-          </div>
+          </Transition>
         </div>
-        </Transition>
       </div>
     </div>
   </div>
@@ -536,7 +554,7 @@ const chips = ref([
 
 const breadcrumbs = ref<Array<BreadcrumbsItem>>([
   {
-    title: "Set Parameters",
+    title: "Set You Basics",
     caption: "Pick up to 5 parameters, and we'll generate 3 countries based on them",
     active: true,
     id: 0,

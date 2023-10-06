@@ -170,9 +170,22 @@ button {
     border: 0;
     outline: none;
     font-size: 16px;
+    transition: all .3s ease-in-out;
     @media(max-width: 768px) {
       font-size: 14px;
       padding: 8px;
+    }
+
+    &:hover {
+      background: #EAEFEB;
+    }
+
+    &:disabled {
+      background: #fff;
+      opacity: .5;
+      &:hover {
+        background: #fff;
+      }
     }
   }
 
@@ -204,9 +217,13 @@ button {
       padding: 7px 10px;
       grid-gap: 10px;
       cursor: pointer;
+      transition: all .3s ease-in-out;
       @media(max-width: 768px) {
         font-size: 14px;
         padding: 8px;
+      }
+      &:hover {
+        background: #B1E530;
       }
     }
   }
@@ -244,10 +261,15 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all .3s ease-in-out;
 
   &:disabled {
     opacity: .5 !important;
     cursor: not-allowed !important;
+  }
+
+  &:hover {
+    background: #9DD219;
   }
 }
 
@@ -382,6 +404,10 @@ button {
           padding-left: 0;
           padding-right: 0;
         }
+
+        &:hover {
+          background: #9DD219;
+        }
       }
 
       &:hover {
@@ -480,9 +506,14 @@ button {
           outline: none;
           margin-left: auto;
           margin-right: auto;
+          transition: all .3s ease-in-out;
           @media(max-width: 768px) {
             padding-left: 0;
             padding-right: 0;
+          }
+
+          &:hover {
+            background: #9DD219;
           }
         }
       }
@@ -515,8 +546,8 @@ button {
   }
 
   .app {
-    aspect-ratio: 330/679;
-    padding: 100px 16px 16px;
+    //aspect-ratio: 330/679;
+    padding: 40px 16px 16px;
     //min-width: 366px;
     //box-sizing: border-box;
     //background-color: #fff;
@@ -672,15 +703,15 @@ button {
             height: 80%;
             position: absolute;
             top: 16%;
-            left: 10px;
+            left: 12px;
             display: block;
             background: #000;
           }
 
           &__radio {
-            width: 18px;
-            height: 18px;
-            min-width: 18px;
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
             border-radius: 50%;
             border: 2px solid #000;
             display: flex;
@@ -714,6 +745,7 @@ button {
         width: calc(100% - 17px);
         margin-left: 0;
         transform: translateX(-19px);
+        box-sizing: content-box;
 
         &::-webkit-scrollbar {
           display: none;
@@ -1022,4 +1054,11 @@ button {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+
+.end_text {
+  padding-left: 10px;
+  line-height: 1.15;
+  font-size: 13px;
 }
